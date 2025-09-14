@@ -1,8 +1,7 @@
 production:
-  <<: *default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV['PGHOST'] %>         # external host from Render
+  host: <%= ENV['PGHOST'] %> # external host from Render
   port: <%= ENV['PGPORT'] || 5432 %>
   database: <%= ENV['PGDATABASE'] %> # database name from Render
   username: <%= ENV['PGUSERNAME'] %> # username from Render
