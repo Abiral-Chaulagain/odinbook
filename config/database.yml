@@ -1,9 +1,20 @@
-production:
+# config/database.yml
+
+default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV['PGHOST'] %> # external host from Render
-  port: <%= ENV['PGPORT'] || 5432 %>
-  database: <%= ENV['PGDATABASE'] %> # database name from Render
-  username: <%= ENV['PGUSERNAME'] %> # username from Render
-  password: <%= ENV['PGPASSWORD'] %> # password from Render
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: odinbook_development
+  host: localhost
+
+test:
+  <<: *default
+  database: odinbook_test
+  host: localhost
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
