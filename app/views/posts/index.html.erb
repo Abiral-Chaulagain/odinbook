@@ -1,0 +1,32 @@
+<h1>Feed</h1>
+<%= link_to "New Post", new_post_path %>
+<% @posts.each do |post| %>
+  <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+    <p><strong><%= post.user.profile&.display_name || post.user.email %></strong></p>
+    <p><%= post.content %></p>
+    <% if post.image.attached? %>
+      <%= image_tag post.image.variant(resize_to_limit: [500, 500]) %>
+    <% end %>
+    <p>Likes: <%= post.likes.count %></p>
+    <% if post.likes.exists?(user: current_user) %>
+      <%= button_to "Unlike", post_like_path(post, post.likes.find_by(user: current_user)), method: :delete %>
+    <% else %>
+      <%= button_to "Like", post_likes_path(post), method: :post %>
+    <% end %>
+    <h4>Comments:</h4>
+    <% post.comments.each do |comment| %>
+      <p><strong><%= comment.user.profile&.display_name || comment.user.email %>:</strong> <%= comment.body %>
+        <% if comment.user == current_user %>
+          <%= button_to "Delete", post_comment_path(post, comment), method: :delete %>
+        <% end %>
+      </p>
+    <% end %>
+    <%= form_with(model: [post, post.comments.build], local: true) do |f| %>
+      <%= f.text_field :body, placeholder: "Add a comment" %>
+      <%= f.submit "Comment" %>
+    <% end %>
+    <% if post.user == current_user %>
+      <%= button_to "Delete Post", post_path(post), method: :delete %>
+    <% end %>
+  </div>
+<% end %>

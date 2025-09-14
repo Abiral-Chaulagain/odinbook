@@ -1,0 +1,8 @@
+<h1>Welcome to Odinbook, <%= @user.profile&.display_name || @user.email %>!</h1>
+<p>
+  You have successfully signed up. Click the link below to sign in and start posting:
+</p>
+<p>
+  <%= link_to 'Sign in', @url %>
+</p>
+<p>Thanks for joining!</p>

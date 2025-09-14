@@ -1,0 +1,7 @@
+<h1>Post by <%= @post.user.profile&.display_name || @post.user.email %></h1>
+<p><%= @post.content %></p>
+<% if @post.image.attached? %>
+  <%= image_tag @post.image.variant(resize_to_limit: [500, 500]) %>
+<% end %>
+<p>Likes: <%= @post.likes.count %></p>
+<%= link_to "Back to Feed", posts_path %>
