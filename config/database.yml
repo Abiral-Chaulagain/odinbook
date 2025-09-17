@@ -9,6 +9,8 @@ development:
   <<: *default
   database: odinbook_development
   host: localhost
+  username: postgres
+  password: yourpassword
 
 test:
   <<: *default
