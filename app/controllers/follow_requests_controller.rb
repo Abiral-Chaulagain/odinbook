@@ -1,8 +1,7 @@
 class FollowRequestsController < ApplicationController
   def create
-    @follow = current_user.active_follow_requests.build(followed_id: params[:followed_id])
+    @follow = current_user.active_follow_requests.build(followee_id: params[:followee_id])
     if @follow.save
-      # notify followed user (optional)
       redirect_back fallback_location: users_path, notice: "Follow request sent."
     else
       redirect_back fallback_location: users_path, alert: "Unable to send request."
@@ -19,7 +18,7 @@ class FollowRequestsController < ApplicationController
   end
 
   def destroy
-    @follow = current_user.active_follow_requests.find_by(followed_id: params[:followed_id])
+    @follow = current_user.active_follow_requests.find_by(followee_id: params[:followee_id])
     @follow&.destroy
     redirect_back fallback_location: users_path
   end
