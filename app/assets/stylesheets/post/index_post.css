@@ -1,0 +1,31 @@
+.index-new-post {
+  width: 50%;
+  padding: 1rem 0rem;
+  flex-direction: row;
+  align-items: start;
+}
+
+.index-post-card {
+  width: 50%;
+  padding: 1rem 1rem;
+  border: 0.1rem solid black;
+  border-radius: 0.4rem;
+  margin: 0.7rem 0;
+}
+
+.index-comments-wrapper {
+  flex-direction: column;
+  border-top: 0.1rem solid black;
+  margin-top: 1rem;
+}
+.index-comment-wrapper {
+  flex-direction: column;
+  border: 0.1rem solid black;
+  border-radius: 0.7rem;
+  margin: 1rem 0.5rem;
+  padding: 0.3rem 1rem;
+}
+
+.comment-user {
+  font-weight: 600;
+}

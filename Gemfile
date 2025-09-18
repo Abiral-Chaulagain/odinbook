@@ -47,6 +47,13 @@ gem "devise"
 # file uploads
 gem "image_processing", "~> 1.2" # for Active Storage variants
 
+# faker gem for creating new posts
+gem "faker"
+
+# azure-storage gem for active storage
+gem "azure-storage-blob", "~> 2.0", require: false
+
+
 # dev mail testing
 group :development do
   gem "letter_opener"

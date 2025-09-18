@@ -1,0 +1,12 @@
+.new-post-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: rgb(223, 223, 223);
+  border-radius: 0.8rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.new-post-content {
+  width: 90%;
+}

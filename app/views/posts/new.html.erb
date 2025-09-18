@@ -1,12 +1,16 @@
-<h1>New Post</h1>
-<%= form_with(model: @post, local: true) do |f| %>
-  <div>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+<div class="page-wrapper">
+  <h1 class="page-title">New Post</h1>
+  <div class="new-post-wrapper">
+    <%= form_with(model: @post, local: true) do |f| %>
+      <div>
+        <%= f.label :content %><br>
+        <%= f.text_area :content, class:"new-post-content" %>
+      </div>
+      <div>
+        <%= f.label :image %><br>
+        <%= f.file_field :image %>
+      </div>
+      <%= f.submit "Post" %>
+    <% end %>
   </div>
-  <div>
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <%= f.submit "Post" %>
-<% end %>
+</div>

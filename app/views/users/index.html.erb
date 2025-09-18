@@ -2,9 +2,9 @@
 <% @users.each do |user| %>
   <div>
     <p><%= user.profile&.display_name || user.email %></p>
-    <% follow_request = current_user.active_follow_requests.find_by(followed_id: user.id) %>
+    <% follow_request = current_user.active_follow_requests.find_by(followee_id: user.id) %>
     <% if follow_request.nil? %>
-      <%= button_to "Follow", follow_requests_path(followed_id: user.id), method: :post %>
+      <%= button_to "Follow", follow_requests_path(followee_id: user.id), method: :post %>
     <% elsif follow_request.pending? %>
       <span>Request Pending</span>
     <% elsif follow_request.accepted? %>

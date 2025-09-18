@@ -10,7 +10,7 @@ development:
   database: odinbook_development
   host: localhost
   username: postgres
-  password: yourpassword
+  password: password
 
 test:
   <<: *default
