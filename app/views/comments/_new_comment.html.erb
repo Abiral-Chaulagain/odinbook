@@ -1,0 +1,6 @@
+<div class="comment-new-comment">
+  <%= form_with(model: [post, post.comments.build],class: "comment-new-comment"  , local: true) do |f| %>
+    <%= f.text_area :body, placeholder: "Add a comment",class: "comment-new-text-area" %>
+    <%= f.submit "Comment", class: "comment-new-btn" %>
+  <% end %>
+</div>

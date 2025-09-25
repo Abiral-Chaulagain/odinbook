@@ -1,0 +1,24 @@
+<div class="index-comments-wrapper">
+  <h4>Comments:</h4>
+  <% post.comments.each do |comment| %>
+    <div class="index-comment-wrapper">
+      <div class="comment-user">
+        <%= render 'profile/profile_image', user: comment.user, size: "40" %>
+        <p class="commenter-display-name">
+          <%= link_to comment.user.profile&.display_name || comment.user.email, user_path(comment.user), class:"user-profile-link" %>
+        </p>
+      </div>
+      <p class="comment-body">
+        <%= comment.body %>
+      </p>
+      <p>
+        <% if comment.user == current_user %>
+          <%= button_to "Delete", post_comment_path(post, comment), method: :delete %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+  <div class="comment-alteration-wrapper">
+    <%= render 'comments/new_comment', post: post %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="nav-links-wrapper">
+  <%=link_to "Your Profile", user_path(current_user), class: "nav-links-text" %>
+  <%=link_to "Feed", root_path, class: "nav-links-text" %>
+  <%=link_to "Users", users_path, class: "nav-links-text" %>
+  <%= link_to "Follows",follow_requests_path, class: "nav-links-text" %>
+  <%= render 'devise/signout/signout' %>
+</div>

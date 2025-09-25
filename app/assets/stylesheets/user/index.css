@@ -1,0 +1,50 @@
+.user-index-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.user-index-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+  height: 50%;
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.user-profile-link {
+  text-decoration: none;
+  color: white;
+}
+
+.user-profile-card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem 0rem;
+  width: 50%;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.user-index-follow-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}

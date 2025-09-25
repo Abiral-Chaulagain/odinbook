@@ -1,0 +1,33 @@
+<div class="page-wrapper">
+  <h1 class="page-title">Active Follows</h1>
+  <div class="all-follow-requests-wrapper">
+    <% if !@incoming_follows.empty?%>
+      <div class="follow-requests-wrapper">
+        <h3>Incoming</h3>
+        <%@incoming_follows.each do |follow|%>
+          <%= render 'follow_requests/follow_card', follow: follow, follow_type: "incoming" %>
+        <%end%>
+      </div>
+    <%end%>
+    <% if !@outgoing_follows.empty?%>
+      <div class="follow-requests-wrapper">
+        <h3>Outgoing</h3>
+        <%@outgoing_follows.each do |follow|%>
+          <%= render 'follow_requests/follow_card', follow: follow, follow_type: "outgoing" %>
+        <%end%>
+      </div>
+    <%end%>
+    <div class="follow-requests-wrapper">
+      <h3>Follows</h3>
+      <% if @follows.empty?%>
+        <div>
+          Not Following Anyone.
+        </div>
+      <%else%>
+        <%@follows.each do |follow|%>
+          <%= render 'follow_requests/follow_card', follow: follow, follow_type: "follows" %>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+</div>

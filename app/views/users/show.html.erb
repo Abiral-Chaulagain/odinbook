@@ -1,16 +1,16 @@
-<h1><%= @user.profile&.display_name || @user.email %></h1>
-<p><%= @user.profile&.bio %></p>
-<% if @user.profile&.avatar&.attached? %>
-  <%= image_tag @user.profile.avatar.variant(resize_to_limit: [200, 200]) %>
-<% end %>
-<h2>Posts</h2>
-<% @posts.each do |post| %>
-  <div>
-    <p><%= post.content %></p>
-    <% if post.image.attached? %>
-      <%= image_tag post.image.variant(resize_to_limit: [500, 500]) %>
-    <% end %>
-    <p>Likes: <%= post.likes.count %></p>
-    <p>Comments: <%= post.comments.count %></p>
+<div class="page-wrapper">
+  <h1 class="page-title"><%= @profile&.display_name || @user.email %></h1>
+  <%= render 'profile/profile_image', user: @user, size: "200"  %>
+  <div class="user-details">
+    <p><%= @profile&.bio %></p>
+    <% if @user != current_user%>
+      <%= render 'follow_requests/user_follow', user: @user %>
+    <%else%>
+      <%= button_to "Edit Profile" ,edit_user_profile_path(@user,@profile), method: :get %>
+    <%end%>
   </div>
-<% end %>
+  <h2>Posts</h2>
+  <% @posts.each do |post| %>
+    <%= render 'posts/show_posts', post: post %>
+  <% end %>
+</div>

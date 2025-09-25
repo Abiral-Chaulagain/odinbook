@@ -1,0 +1,23 @@
+<%following_user = follow.follower if follow_type == "incoming" %>
+<%following_user = follow.followee if follow_type == "outgoing" || follow_type == "follows" %>
+<div class="follow-request-card">
+  <div class="follow-request-card-profile">
+    <%= render 'profile/profile_image',user: following_user, size: "80"  %>
+    <p class="follow-request-card-name">
+      <%= link_to following_user.profile&.display_name || following_user.email, user_path(following_user), class:"user-profile-link" %>
+    </p>
+  </div>
+  <% if follow_type == "incoming"%>
+    <div class="follow-card-follow-wrapper">
+      <%= render 'follow_requests/follow_user_btn',user: following_user, follow_type: follow_type %>
+    </div>
+  <%elsif follow_type == "outgoing"%>
+    <div class="follow-card-follow-wrapper">
+      <%= render 'follow_requests/follow_user_btn',user: following_user, follow_type: follow_type %>
+    </div>
+  <%elsif follow_type == "follows"%>
+    <div class="follow-card-follow-wrapper">
+      <%= render 'follow_requests/follow_user_btn',user: following_user, follow_type: follow_type %>
+    </div>
+  <%end%>
+</div>

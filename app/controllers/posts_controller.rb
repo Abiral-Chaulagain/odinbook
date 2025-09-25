@@ -5,9 +5,14 @@ class PostsController < ApplicationController
   # Feed: posts from self + followed users
   def index
     followed_ids = current_user.following.select(:id)
+
     @posts = Post.where(user_id: [ current_user.id ] + followed_ids)
                  .order(created_at: :desc)
-                 .includes(:user, :comments, :likes)
+                 .includes(
+                    :likes,
+                    comments: { user: { profile: { avatar_attachment: :blob } } },
+                    user: { profile: { avatar_attachment: :blob } }
+                 )
   end
 
   def show

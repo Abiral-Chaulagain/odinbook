@@ -50,8 +50,10 @@ gem "image_processing", "~> 1.2" # for Active Storage variants
 # faker gem for creating new posts
 gem "faker"
 
+# open-uri gem for getting images from links
+
 # azure-storage gem for active storage
-gem "azure-storage-blob", "~> 2.0", require: false
+# gem "azure-storage-blob", "~> 2.0", require: false
 
 
 # dev mail testing

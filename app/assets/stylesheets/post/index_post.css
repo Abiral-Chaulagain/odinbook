@@ -1,16 +1,45 @@
-.index-new-post {
+.index-links-wrapper {
+  display: flex;
   width: 50%;
   padding: 1rem 0rem;
   flex-direction: row;
   align-items: start;
+  justify-content: space-between;
+}
+
+.index-post-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.post-avatar {
+  border-radius: 4rem;
+}
+
+.index-post-profile-display-name {
+  padding-left: 1rem;
+  font-weight: 600;
+  margin: 1rem 0rem;
 }
 
 .index-post-card {
   width: 50%;
-  padding: 1rem 1rem;
+  padding: 1rem 1.5rem;
   border: 0.1rem solid black;
   border-radius: 0.4rem;
   margin: 0.7rem 0;
+}
+
+.post-image-tag {
+  width: 50%;
+}
+
+.index-post-image {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .index-comments-wrapper {
@@ -26,6 +55,8 @@
   padding: 0.3rem 1rem;
 }
 
-.comment-user {
-  font-weight: 600;
+.post-delete-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 1rem;
 }

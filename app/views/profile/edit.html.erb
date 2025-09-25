@@ -1,0 +1,36 @@
+<div class="page-wrapper">
+  <h1 class="page-title">Edit Profile</h1>
+  <div class="profile-form-wrapper">
+    <%= form_with(model: @profile, url: user_profile_path(@user), local: true, html: { class: 'profile-form' }) do |f| %>
+      <div class="profile-form-avatar-field">
+        <% if @profile&.avatar&.attached? && @profile.avatar.blob.present? %>
+          <%= image_tag @profile.avatar, alt: @user.id, class: "post-avatar", size: "300"%>
+        <% else %>
+          <%= image_tag "default_avatar.png", alt: @user.id, class: "post-avatar", size: "300"  %>
+        <% end %>
+        <div  class="profile-form-avatar-file-field">
+          <p>Change Avatar</p>
+          <%= f.file_field :avatar%>
+        </div>
+      </div>
+      <div class="profile-form-fields-wrapper">
+        <div class="profile-form-field">
+          <%= f.label :display_name, class:"profile-form-field-title" %><br>
+          <%= f.text_field :display_name, class: "profile-form-field-text-field" %>
+        </div>
+        <div class="profile-form-field">
+          <%= f.label :location%><br>
+          <%= f.text_field :location, class: "profile-form-field-text-field"%>
+        </div>
+        <div class="profile-form-field">
+          <%= f.label :bio %><br>
+          <%= f.text_area :bio, class: "profile-form-field-text-area" %>
+        </div>
+      </div>
+      <div class="profile-form-submit">
+        <%= f.submit "Update"%>
+      </div>
+    <%end%>
+    <%= button_to "Edit Account Details" ,edit_user_registration_path, method: :get %>
+  </div>
+</div>

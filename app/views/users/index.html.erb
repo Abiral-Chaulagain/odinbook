@@ -1,16 +1,16 @@
-<h1>All Users</h1>
-<% @users.each do |user| %>
-  <div>
-    <p><%= user.profile&.display_name || user.email %></p>
-    <% follow_request = current_user.active_follow_requests.find_by(followee_id: user.id) %>
-    <% if follow_request.nil? %>
-      <%= button_to "Follow", follow_requests_path(followee_id: user.id), method: :post %>
-    <% elsif follow_request.pending? %>
-      <span>Request Pending</span>
-    <% elsif follow_request.accepted? %>
-      <span>Following</span>
-      <%= button_to "Unfollow", follow_request_path(follow_request), method: :delete %>
+<div class="page-wrapper">
+  <h1 class="page-title">All Users</h1>
+  <div class="user-index-wrapper">
+    <% @users.each do |user| %>
+      <div class="user-index-profile-card">
+        <%= render 'profile/profile_image', user: user, size: "150" %>
+        <div class="user-profile-card-details">
+          <%= link_to user.profile&.display_name || user.email, user_path(user), class:"user-profile-link" %>
+          <div class="user-index-follow-wrapper">
+            <%= render 'follow_requests/user_follow', user: user %>
+          </div>
+        </div>
+      </div>
     <% end %>
-    <%= link_to "View Profile", user_path(user) %>
   </div>
-<% end %>
+</div>

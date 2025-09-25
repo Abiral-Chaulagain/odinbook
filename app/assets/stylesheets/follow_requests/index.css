@@ -1,0 +1,61 @@
+.follow-requests-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.follow-card {
+  display: flex;
+}
+
+.all-follow-requests-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.follow-requests-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.follow-request-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  padding: 1rem;
+}
+
+.follow-request-card-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.follow-request-card-name {
+  padding-left: 2rem;
+}
+
+.follow-card-follow-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.follow-request-incoming-btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-evenly;
+}
+
+.follow-request-status-text {
+  margin: 0;
+  padding-bottom: 0.3rem;
+}
+.follow-request-btn {
+  margin: 0.5rem;
+}

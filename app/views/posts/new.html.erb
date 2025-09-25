@@ -1,8 +1,8 @@
 <div class="page-wrapper">
   <h1 class="page-title">New Post</h1>
   <div class="new-post-wrapper">
-    <%= form_with(model: @post, local: true) do |f| %>
-      <div>
+    <%= form_with(model: @post, local: true, html: {class: 'new-post-form'}) do |f| %>
+      <div class="new-post-field">
         <%= f.label :content %><br>
         <%= f.text_area :content, class:"new-post-content" %>
       </div>
