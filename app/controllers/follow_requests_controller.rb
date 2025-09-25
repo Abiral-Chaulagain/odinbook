@@ -1,4 +1,3 @@
-require "debug"
 class FollowRequestsController < ApplicationController
   def index
     @incoming_follows = current_user.passive_follow_requests.where(status: 0)
