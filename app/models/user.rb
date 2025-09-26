@@ -9,16 +9,23 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   # Follow system
+<<<<<<< HEAD
   has_many :outgoing_follow_requests, class_name: "FollowRequest",
+=======
+  has_many :outgoing_follow_requests,  class_name: "FollowRequest",
+>>>>>>> 8cd1de0... removed redundant lines of code, changed naming for follow_requests from active/passive to incoming/outgoing
                                      foreign_key: "follower_id",
                                      dependent: :destroy
   has_many :incoming_follow_requests, class_name: "FollowRequest",
                                      foreign_key: "followee_id",
                                      dependent: :destroy
 
+<<<<<<< HEAD
   has_many :following, through: :outgoing_follow_requests, source: :followee
   has_many :followers, through: :incoming_follow_requests, source: :follower
 
+=======
+>>>>>>> 8cd1de0... removed redundant lines of code, changed naming for follow_requests from active/passive to incoming/outgoing
   after_create :send_welcome_email, :create_profile
 
   def send_welcome_email
