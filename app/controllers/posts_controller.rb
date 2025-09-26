@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # Feed: posts from self + followed users
   def index
-    followed_ids = current_user.outgoing_follow_requests.select(:id)
+    followed_ids = current_user.following.select(:id)
 
     @posts = Post.where(user_id: [ current_user.id ] + followed_ids)
                  .order(created_at: :desc)
