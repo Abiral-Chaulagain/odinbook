@@ -1,14 +1,14 @@
 <% case follow_type%>
 <% when "incoming" %>
   <%# get follow request where the followee is the current user  %>
-  <% follow_request = user.active_follow_requests.find_by(followee_id: current_user.id)%>
+  <% follow_request = user.outgoing_follow_requests.find_by(followee_id: current_user.id)%>
   <div class="follow-request-incoming-btn-wrapper">
     <%= button_to "Accept", follow_request_path(id: follow_request.id, update: "accepted"), method: :patch, class:"follow-request-btn" %>
     <%= button_to "Reject", follow_request_path(id: follow_request.id, update: "declined"), method: :patch, class:"follow-request-btn" %>
   </div>
 <% when "outgoing" %>
   <%# get follow_request where the follower is the current user %>
-  <% follow_request = current_user.active_follow_requests.find_by(followee_id: user.id)%>
+  <% follow_request = current_user.outgoing_follow_requests.find_by(followee_id: user.id)%>
   <% if follow_request.status == "pending"  %>
     <p class="follow-request-status-text" >Request Pending.</p>
     <%= button_to "Cancel", follow_request_path(follow_request), method: :delete, class:"follow-request-btn" %>
@@ -18,7 +18,7 @@
   <% end %>
 <% when "follows" %>
   <%# get follow_request where the follower is the current user %>
-  <% follow_request = current_user.active_follow_requests.find_by(followee_id: user.id)%>
+  <% follow_request = current_user.outgoing_follow_requests.find_by(followee_id: user.id)%>
   <%= button_to "Unfollow", follow_request_path(follow_request), method: :delete, class:"follow-request-btn" %>
 <%end %>
 <% if follow_request.nil? && follow_type != "incoming" %>

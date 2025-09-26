@@ -1,18 +1,18 @@
 class FollowRequestsController < ApplicationController
   def index
-    @incoming_follows = current_user.passive_follow_requests.where(status: 0)
+    @incoming_follows = current_user.incoming_follow_requests.where(status: 0)
                                                             .includes(follower: { profile: { avatar_attachment: :blob } })
                                                             .order(created_at: :desc)
-    @outgoing_follows = current_user.active_follow_requests.where(status: 0)
+    @outgoing_follows = current_user.outgoing_follow_requests.where(status: 0)
                                                            .includes(followee: { profile: { avatar_attachment: :blob } })
                                                            .order(created_at: :desc)
-    @follows = current_user.active_follow_requests.where(status: 1)
+    @follows = current_user.outgoing_follow_requests.where(status: 1)
                                                   .includes(followee: { profile: { avatar_attachment: :blob } })
                                                   .order(created_at: :desc)
   end
 
   def create
-    @follow = current_user.active_follow_requests.build(followee_id: params[:followee_id], status: 0)
+    @follow = current_user.outgoing_follow_requests.build(followee_id: params[:followee_id], status: 0)
     if @follow.save
       redirect_back fallback_location: users_path, notice: "Follow request sent."
     else

@@ -9,15 +9,12 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   # Follow system
-  has_many :active_follow_requests,  class_name: "FollowRequest",
+  has_many :outgoing_follow_requests,  class_name: "FollowRequest",
                                      foreign_key: "follower_id",
                                      dependent: :destroy
-  has_many :passive_follow_requests, class_name: "FollowRequest",
+  has_many :incoming_follow_requests, class_name: "FollowRequest",
                                      foreign_key: "followee_id",
                                      dependent: :destroy
-
-  has_many :following, through: :active_follow_requests, source: :followee
-  has_many :followers, through: :passive_follow_requests, source: :follower
 
   after_create :send_welcome_email, :create_profile
 
